@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
     {
         currentLevel = level;
         turnCount = currentLevel.Turn;
-        ChangeSceneWith(2);
+        SceneManagement._I.ChangeSceneWith(2);
         timesUsedGetBackMove = 0;
     }
 
@@ -89,7 +89,7 @@ public class LevelManager : MonoBehaviour
 
     public void LeaveLevel()
     {
-        ChangeSceneWith(1);
+        SceneManagement._I.ChangeSceneWith(1);
     }
 
     private void DoneCurrentLevel()
@@ -100,10 +100,5 @@ public class LevelManager : MonoBehaviour
             SoundManager._I.audioSource.PlayOneShot(SoundManager._I.Win);
         LevelInformationManager._I.LevelDoneEvent.Invoke();
         SaveSystem.SaveData(levelsDict);
-    }
-
-    private static void ChangeSceneWith(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
     }
 }
